@@ -160,7 +160,6 @@ public class TypeChecker extends MiniJavaBaseListener {
             // all other operations return ints.
             case "&&":
             case "<":
-	    case ">":
                 this.types.push(new Type(Kind.BOOLEAN));
                 break;
             default:
