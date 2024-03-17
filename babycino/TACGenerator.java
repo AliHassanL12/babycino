@@ -244,7 +244,6 @@ public class TACGenerator extends MiniJavaBaseVisitor<TACBlock> {
             return result;
         }
 	if (op.equals(">")) {
-		String labelTrue = this.genlab();
 		String labelEnd = this.genlab();
 		String res = this.genreg();
 		String temp = this.genreg();
@@ -254,13 +253,13 @@ public class TACGenerator extends MiniJavaBaseVisitor<TACBlock> {
 		
 		result.add(TACOp.binop(temp, expr1.getResult(), expr2.getResult(), 2));
 		
-		result.add(TACOp.jz(temp, labelTrue));
+		result.add(TACOp.jz(temp, labelEnd));
 
-		result.add(TACOp.immed(res, 0));
+		result.add(TACOp.immed(res, 1));
 		result.add(TACOp.jmp(labelEnd));
 
-		result.add(TACOp.label(labelTrue));
-		result.add(TACOp.immed(res,1));
+		result.add(TACOp.label(labelEnd));
+		result.add(TACOp.immed(res,0));
 
 		result.add(TACOp.label(labelEnd));
 		result.setResult(res);
