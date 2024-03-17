@@ -244,7 +244,7 @@ public class TACGenerator extends MiniJavaBaseVisitor<TACBlock> {
             return result;
         }
 	if (op.equals(">")) {
-		String labelTrue = this.genlab()
+		String labelTrue = this.genlab();
 		String labelEnd = this.genlab();
 		String res = this.genreg();
 		String temp = this.genreg();
