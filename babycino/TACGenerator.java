@@ -255,7 +255,7 @@ public class TACGenerator extends MiniJavaBaseVisitor<TACBlock> {
 		result.add(TACOp.binop(subResult, expr1.getResult(), expr2.getResult(), n));
 		
 		result.add(TACOp.mov(res, subResult.getResult()));
-		result.add(TACOp.jz(res, end);
+		result.add(TACOp.jz(res, end));
 		result.setResult(res);
 		return result;
 	}
