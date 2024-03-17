@@ -3,5 +3,5 @@ class TestBugH2 {
 		int x = 0;
 		do {
 			System.out.println("Should print even if x is 0);
-		} while (x>0);
+		} while (x<0);
 }
