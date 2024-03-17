@@ -254,6 +254,13 @@ public class TACGenerator extends MiniJavaBaseVisitor<TACBlock> {
 		int n = TACOp.binopToCode("-");
 		result.add(TACOp.binop(subResult, expr1.getResult(), expr2.getResult(), n));
 		
+		result.add(TACOp.immed(res, 0));
+		result.add(TACOp.jmp(endLabel));
+		result.add(TACOp.label(positiveLabel));
+		result.add(TACOp.immed(res, 1));
+
+		result.add(TACOp.label(endLabel));
+		result.setResult(res);
 		return result;
 	}
 
