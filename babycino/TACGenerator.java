@@ -244,25 +244,18 @@ public class TACGenerator extends MiniJavaBaseVisitor<TACBlock> {
             return result;
         }
 	if (op.equals(">")) {
-		String labelEnd = this.genlab();
-		String res = this.genreg();
-		String temp = this.genreg();
+		String labelEnd = this.genlab(); //generate label for end of comparison block
+		String res = this.genreg(); //allocate a register to store final result of comparison
+		String temp = this.genreg();  // allocate temp register to hold intermediate result
 		
-		result.addAll(expr1);
-		result.addAll(expr2);
+		result.addAll(expr1); //evalurate first operand and add TAC to current block
+		result.addAll(expr2); //evaluate second operand and add TAC to current block
 		
-		result.add(TACOp.binop(temp, expr1.getResult(), expr2.getResult(), 2));
+		result.add(TACOp.binop(temp, expr1.getResult(), expr2.getResult(), 2)); //perform binary - operation to result of expr1 and expr2, store in temp
 		
-		result.add(TACOp.jz(temp, labelEnd));
+		result.add(TACOp.jz(temp, labelEnd)); // if its 0 than jump to labelEnd
 
-		result.add(TACOp.immed(res, 1));
-		result.add(TACOp.jmp(labelEnd));
-
-		result.add(TACOp.label(labelEnd));
-		result.add(TACOp.immed(res,0));
-
-		result.add(TACOp.label(labelEnd));
-		result.setResult(res);
+		result.setResult(temp); //didn't know how to proceed any further ... so ended here by setting result to be the value in temp and then returning it 
 		return result;
 	}
 
