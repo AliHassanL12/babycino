@@ -253,7 +253,6 @@ public class TACGenerator extends MiniJavaBaseVisitor<TACBlock> {
 		
 		result.add(TACOp.binop(temp, expr1.getResult(), expr2.getResult(), 2)); //perform binary - operation to result of expr1 and expr2, store in temp
 		
-		result.add(TACOp.jz(temp, labelEnd)); // if its 0 than jump to labelEnd 
  		return result;  //didn't know how to proceed any further ... so ended here by setting result to be the value in temp and then returning it 
 	}
 
